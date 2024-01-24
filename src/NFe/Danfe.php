@@ -2564,9 +2564,9 @@ class Danfe extends DaCommon
             $quantidade  += !empty($volume->getElementsByTagName("qVol")->item(0)->nodeValue) ?
                 $volume->getElementsByTagName("qVol")->item(0)->nodeValue : 0;
             $pesoBruto   += !empty($volume->getElementsByTagName("pesoB")->item(0)->nodeValue) ?
-                $volume->getElementsByTagName("pesoB")->item(0)->nodeValue : 0;
+                ($volume->getElementsByTagName("pesoB")->item(0)->nodeValue * $volume->getElementsByTagName("qVol")->item(0)->nodeValue) : 0;
             $pesoLiquido += !empty($volume->getElementsByTagName("pesoL")->item(0)->nodeValue) ?
-                $volume->getElementsByTagName("pesoL")->item(0)->nodeValue : 0;
+                ($volume->getElementsByTagName("pesoL")->item(0)->nodeValue * $volume->getElementsByTagName("qVol")->item(0)->nodeValue): 0;
             $texto       = !empty($this->transp->getElementsByTagName("esp")->item(0)->nodeValue) ?
                 $this->transp->getElementsByTagName("esp")->item(0)->nodeValue : '';
             if ($texto != $especie && $especie != '') {
